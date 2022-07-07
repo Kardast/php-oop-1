@@ -10,7 +10,7 @@ class Movie {
     public $director;
     public $year;
     public $quantity;
-    public $available = true;
+    public $message = '';
 
     public function __construct($c_name, $c_genre, $c_nationality, $c_film_length, $c_director, $c_year, $c_quantity)
     {
@@ -29,7 +29,9 @@ class Movie {
 
     public function movieAvailability() {
         if ($this->quantity < 1) {
-            $this->available = false;
+            $this->message = 'Non disponibile';
+        } else {
+            $this->message = 'Disponibile';
         }
     }
 
@@ -37,15 +39,36 @@ class Movie {
 
 
 $scarface = new Movie('Scarface', 'Gangster', 'USA', '170 min', 'Brian De Palma', 1983, 10);
+$scarArray = (array) $scarface;
 $the_dark_knight = new Movie('The Dark Knight', 'Action', 'UK, USA', '152 min', 'Christopher Nolan', 2008, 0);
-// $scarface->name = "Scarface";
-// $scarface->genre = "Gangster";
-// $scarface->nationality = "USA";
-// $scarface->film_length = "170 min";
-// $scarface->director = "Brian De Palma";
-// $scarface->year = 1983;
-
-var_dump($scarface, $the_dark_knight);
+$knightArray = (array) $the_dark_knight;
 
 
-echo '<br>Gli oggetti di tipo Movie instanziati sono ' . Movie::$counter_of_objects;
+
+// var_dump($scarface, $the_dark_knight);
+// var_dump($scarArray);
+// echo '<br>Gli oggetti di tipo Movie instanziati sono ' . Movie::$counter_of_objects;
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP1</title>
+</head>
+<body>
+
+<?php foreach ($scarArray as $key => $value) { ?>
+    <h2><?php echo $value ?></h2> <?php
+} ?>
+
+<br>
+
+<?php foreach ($knightArray as $key => $value) { ?>
+    <h2><?php echo $value ?></h2> <?php
+} ?>
+
+</body>
+</html>
